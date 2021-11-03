@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Principal</title>
+    <title>SAT</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/portfolio/icono.ico'%}" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -25,7 +25,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Inicio</a>
             <button
                 class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
                 type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -36,17 +36,9 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#Login">Login</a></li>
+                            href="#Cargaxmls">Archivo XML</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#mision">Misión</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#vision">Visión</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#acerca">Acerca de</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#medidas">Medidas de prevención del COVID</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#contactenos">Contáctenos</a></li>
+                            href="#ayuda">Ayuda</a></li>
 
                 </ul>
             </div>
@@ -56,9 +48,9 @@
     <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="assets/img/portfolio/logo1.png" alt="" />
+            <img class="mb-3" style="width: 80%;" src="{% static 'assets/img/portfolio/logo.png' %}" alt="" />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">UHospital</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Validaciones SAT</h1>
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -66,15 +58,15 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Atención Humanizada y Segura</p>
+            <p class="masthead-subheading font-weight-light mb-0">Atención Precisa y Segura</p>
         </div>
     </header>
-    <!-- Seccion de login-->
+    <!-- Seccion de Carga-->
 
-    <section class="page-section portfolio" id="Login">
+    <section class="page-section portfolio" id="Cargaxmls">
         <div class="container">
             <!-- Portfolio Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Login</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Cargar Archivo</h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -83,24 +75,42 @@
             </div>
 
             <div class="row justify-content-center">
-                <form>
-                    <h1 class="h3 mb-3 fw-normal">Inicio de Sesión</h1>
 
-                    <div class="form-floating">
-                        <input type="email" class="form-control" id="usuario" placeholder="Usuario"
-                            style="margin-top: 5px;">
-                    </div>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="contraseña" placeholder="Contraseña"
-                            style="margin-top: 5px;">
-                    </div>
-
-                    <button onclick="iniciarsesion()" class="w-100 btn btn-lg btn-primary" type="button"
-                        style="margin-top: 5px;">Iniciar sesión</button>
-                    <button onclick="registrarusuario()" class="w-100 btn btn-lg btn-primary" type="button"
-                        style="margin-top: 5px;">Registrarse</button>
-                </form>
+                <div class="form-floating">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Por favor seleccione en archivo XML</label>
+                            <input type="file" accept="xml" onchange="cargarArchivo()" class="form-control-file" id="archivoxml">
+                        </div>
+                    </form>
+                </div>
+                <button onclick="cargarArchivo()" class=" btn btn-lg btn-primary" type="button"
+                style="margin-top: 5px; width: 15%; height: 50px;">Abrir</button>
             </div>
+
+
+            <div class="container-fluid">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Entrada</label>
+                        <textarea class="form-control" style="width: 100%; height: 400px;" id="entradaxml" rows="3"></textarea>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Salida</label>
+                        <textarea class="form-control" style="width: 100%; height: 400px;" id="salidaxml" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            
+            <button onclick="iniciarsesion()" class="w-100 btn btn-lg btn-primary" type="button"
+                style="margin-top: 5px;">Enviar</button>
+            <!-- <button onclick="registrarusuario()" class="w-100 btn btn-lg btn-primary" type="button"
+                style="margin-top: 5px;">Registrarse</button> -->
         </div>
     </section>
     <!-- Mision-->
@@ -135,140 +145,10 @@
         </div>
     </section>
 
-    <!-- Vison Section-->
-    <section class="page-section" id="vision">
-        <div class="container">
-            <!-- Vision Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Visión</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Vision Section Form-->
-            <div align="center">
-                <img src="https://i.pinimg.com/originals/8a/22/8e/8a228e7a2438263f4099dca6a057a9ea.jpg"
-                    style="width: 600px;">
-            </div>
-            <div class="row" style="padding-top: 20px;">
-                <p class="lead">Liderar la Transformación del Sistema Sanitario actual para asegurar su sostenibilidad,
-                    promoviendo la eficiencia y la innovación, incorporando las nuevas tecnologías disponibles.</p>
-                <p class="lead">Ser reconocidos como referentes a nivel local (Ciudad de Guatemala), nacional e
-                    internacional, desde
-                    la perspectiva asistencial, docente e investigadora.</p>
+    
 
-            </div>
-        </div>
-    </section>
-
-    <!--Acerca de-->
-    <section class="page-section bg-primary text-white mb-0" id="acerca">
-        <div class="container">
-            <!-- Acerca de Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-white">Acerca de</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Acerca de Content-->
-            <div align="center">
-                <img src="https://www.guatemala.com/fotos/2020/03/Hospitales-en-zona-1-885x500.jpg"
-                    style="width: 600px;">
-            </div>
-            <div class="row" style="padding-top: 20px;">
-                <p class="lead">El Hospital Angeles es un centro de referencia regional de atención terciaria ofreciendo
-                    atención médica y quirúrgica compleja e integral. El personal médico del hospital está compuesto por
-                    especialistas en más de 32 especialidades médicas y 13 especialidades quirúrgicas.</p>
-                <p class="lead">Durante 2014 Hospital Angeles tuvo más de 77,000 visitas clínicas y realizaron más de
-                    7,000
-                    cirugías. Hospital Angeles fue el primer hospital en el Sur de Texas en ofrecer servicios de
-                    emergencia
-                    exclusivamente pediátricos y en 2014 tuvo más de 35,700 visitas a la Sala de Emergencias. </p>
-
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- medidas Section-->
-    <section class="page-section" id="medidas">
-        <div class="container">
-            <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Medidas de prevención del
-                COVID</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <div align="center">
-                <img src="https://ichef.bbci.co.uk/news/640/cpsprodpb/D5AD/production/_115210745_spike1.jpg"
-                    style="width: 600px;">
-            </div>
-            <div class="row" style="padding-top: 20px;">
-                <ol>
-                    <li class="lead">Lávate las manos con frecuencia. Usa agua y jabón o un desinfectante de manos a
-                        base de alcohol.</li>
-                    <li class="lead" style="padding-top: 5px;">Mantén una distancia de seguridad con personas que tosan
-                        o estornuden.</li>
-                    <li class="lead" style="padding-top: 5px;">Utiliza mascarilla cuando no sea posible mantener el
-                        distanciamiento físico.</li>
-                    <li class="lead" style="padding-top: 5px;">No te toques los ojos, la nariz ni la boca.</li>
-                    <li class="lead" style="padding-top: 5px;">Cuando tosas o estornudes, cúbrete la nariz y la boca con
-                        el codo flexionado o con un pañuelo.</li>
-                    <li class="lead" style="padding-top: 5px;">Si no te encuentras bien, quédate en casa.</li>
-                    <li class="lead" style="padding-top: 5px;">En caso de que tengas fiebre, tos o dificultad para
-                        respirar, busca atención médica.</li>
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contactenos-->
-    <section class="page-section bg-primary text-white mb-0" id="contactenos">
-        <div class="container">
-            <!-- Acerca de Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-white">Contáctenos</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Acerca de Content-->
-            <div>
-                <p class="lead">Direccion: 2A Av. 14-74, Ciudad de Guatemala</p>
-                <p class="lead">Teléfono: (502) 25058100</p>
-                <p class="lead">Correo: info@hospitalangeles.com.gt</p>
-                <p class="lead">Abierto las 24 horas</p>
-            </div>
-            <div class="lead" align="center">
-                <h4 class="text-uppercase mb-4">Nuestras redes</h4>
-                <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/hospitalangelesgt"><i
-                        class="fab fa-fw fa-facebook-f"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="https://www.instagram.com/hospitalangelesgt/"><i
-                        class="fab fa-fw fa-instagram"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="https://twitter.com/HAngelesGT"><i
-                        class="fab fa-fw fa-twitter"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1"
-                    href="https://api.whatsapp.com/send?phone=50254215151"><i class="fab fa-fw fa-whatsapp"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1"
-                    href="https://www.youtube.com/channel/UCaWemNL_njc_WjRuZHh0Niw"><i
-                        class="fab fa-fw fa-youtube"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1"
-                    href="https://www.google.com/maps/place/Hospital+Angeles/@14.6344859,-90.5216215,17z/data=!3m1!4b1!4m5!3m4!1s0x8589a22274063161:0x8453535f62145fac!8m2!3d14.6345325!4d-90.5196162"><i
-                        class="fas fa-location-arrow"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- medidas Section-->
-    <section class="page-section" id="medidas">
+    <!-- Ayuda Section-->
+    <section class="page-section" id="ayuda">
         <div class="container">
             <!-- Contact Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Estudiante desarrollador
@@ -308,127 +188,8 @@
     <!-- Third party plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
-
-
-
-    <script>
-
-
-        function iniciarsesion() {
-            var user = false
-            var usuario = document.querySelector('#usuario').value
-            var contraseña = document.querySelector('#contraseña').value
-
-            if (usuario == "admin" && contraseña == "1234" && user == false) {
-                sessionStorage.setItem("usuario", "admin")
-                alert("Bienvenido Carlos Jimenez" + usuario)
-                location.href = "admin.html"
-                user = true
-            }
-
-            if (user == false) {
-                fetch('https://backend-202010223.herokuapp.com/mostrarpacientes', {
-                    method: 'Get',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': '*',
-                    }
-                })
-                    .then(res => res.json())
-                    .catch(err => {
-                        console.error('Error:', err)
-                        alert("Ocurrio un error, ver la consola")
-                    })
-                    .then(response => {
-                        response.forEach(element => {
-
-                            if ((element.usuario == usuario) && (element.contraseña == contraseña)) {
-                                alert("Bienvenido " + usuario)
-                                sessionStorage.setItem("ID", element.id)
-                                sessionStorage.setItem('nombre', element.nombre + " " + element.apellido)
-                                location.href = "paciente.html"
-                                user = true
-                            }
-                        });
-                        if (user == false) {
-                            verenfermeras(usuario, contraseña);
-                        }
-                    })
-
-            }
-
-
-        }
-        function verenfermeras(usuario, contraseña) {
-            user = false
-            fetch('https://backend-202010223.herokuapp.com/mostrarenfermeras', {
-                method: 'Get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                }
-            })
-                .then(res => res.json())
-                .catch(err => {
-                    console.error('Error:', err)
-                    alert("Ocurrio un error, ver la consola")
-                })
-                .then(response => {
-                    response.forEach(element => {
-
-                        if ((element.usuario == usuario) && (element.contraseña == contraseña)) {
-                            alert("Bienvenido " + usuario)
-                            sessionStorage.setItem("ID", element.id)
-                            sessionStorage.setItem('nombre', element.nombre + " " + element.apellido)
-                            location.href = "enfermera.html"
-                            user = true
-                        }
-                    });
-                    if (user == false) {
-                        verdoctores(usuario, contraseña);
-                    }
-                })
-
-        }
-
-        function verdoctores(usuario, contraseña) {
-            user = false
-            fetch('https://backend-202010223.herokuapp.com/mostrarmedicos', {
-                method: 'Get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                }
-            })
-                .then(res => res.json())
-                .catch(err => {
-                    console.error('Error:', err)
-                    alert("Ocurrio un error, ver la consola")
-                })
-                .then(response => {
-                    response.forEach(element => {
-
-                        if ((element.usuario == usuario) && (element.contraseña == contraseña)) {
-                            alert("Bienvenido " + usuario)
-                            sessionStorage.setItem("ID", element.id)
-                            sessionStorage.setItem('nombre', element.nombre + " " + element.apellido)
-                            location.href = "doctor.html"
-                            user = true
-                        }
-                    });
-                    if (user == false) {
-                        alert("usuario no encontrado")
-                    }
-                })
-        }
-
-        function registrarusuario() {
-            location.href = "registro.html"
-        }
-
-
-
-    </script>
+    <script src="{% static 'js/funciones.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 
 </html>
