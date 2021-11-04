@@ -35,6 +35,54 @@ function enviararchivo() {
         })
         .then(response => {
             alert(response.Mensaje)
-            document.getElementById("salidaxml").value=response.salida
         })
+};
+
+
+function reset() {
+    document.getElementById('entradaxml').value=""
+    document.getElementById('salidaxml').value=""
+    objeto=[]
+    fetch(`http://localhost:5000/reset`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        }
+    })
+        .then(res => res.json())
+        .catch(err => {
+            console.error('Error:', err)
+            alert("Ocurrio un error, ver la consola")
+        })
+        .then(response => {
+            alert(response.Mensaje)
+            
+
+    })
+    
+};
+
+
+function Consultar() {
+    document.getElementById('salidaxml').value=""
+    objeto=[]
+    fetch(`http://localhost:5000/consultar`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        }
+    })
+        .then(res => res.json())
+        .catch(err => {
+            console.error('Error:', err)
+            alert("Ocurrio un error, ver la consola")
+        })
+        .then(response => {
+            document.getElementById('salidaxml').value=response.salida
+            
+
+    })
+    
 };

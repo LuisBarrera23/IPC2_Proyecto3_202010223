@@ -50,13 +50,13 @@ def generarXml():
         texto+="\n\t\t<FECHA>"+l.fecha+"</FECHA>"
         texto+="\n\t\t<FACTURASRECIBIDAS>"+str(l.cantidad)+"</FACTURASRECIBIDAS>"
 
-        texto+="\n\t\t<Errores>"
+        texto+="\n\t\t<ERRORES>"
         texto+="\n\t\t\t<NIT_EMISOR>"+str(l.errorEmisor)+"</NIT_EMISOR>"
         texto+="\n\t\t\t<NIT_RECEPTOR>"+str(l.errorReceptor)+"</NIT_RECEPTOR>"
         texto+="\n\t\t\t<IVA>"+str(l.errorIva)+"</IVA>"
         texto+="\n\t\t\t<TOTAL>"+str(l.errorTotal)+"</TOTAL>"
         texto+="\n\t\t\t<REFERENCIA_DUPLICADA>"+str(l.refDuplicada)+"</REFERENCIA_DUPLICADA>"
-        texto+="\n\t\t</Errores>"
+        texto+="\n\t\t</ERRORES>"
 
         texto+="\n\t\t<FACTURAS_CORRECTAS>"+str(len(l.Aprobaciones))+"</FACTURAS_CORRECTAS>"
         texto+="\n\t\t<CANTIDAD_EMISORES>"+str(len(l.lEmisores))+"</CANTIDAD_EMISORES>"
@@ -148,6 +148,20 @@ def procesar():
     generarXml()
 
     return jsonify({'Mensaje':"Archivo leido","salida":texto})
+
+@app.route('/reset',methods=['GET'])
+def reset():
+    global listado,texto
+    listado=[]
+    texto=""
+
+    return jsonify({'Mensaje':"Datos borrados con exito"})
+
+
+@app.route('/consultar',methods=['GET'])
+def consultar():
+    global texto
+    return jsonify({'salida':texto})
 
 
 if __name__=='__main__':
