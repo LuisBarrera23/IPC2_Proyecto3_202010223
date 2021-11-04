@@ -80,7 +80,8 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Por favor seleccione en archivo XML</label>
-                            <input type="file" accept="xml" onchange="cargarArchivo()" class="form-control-file" id="archivoxml">
+                            <input type="file" accept="xml" onchange="cargarArchivo()" class="form-control-file"
+                                id="archivoxml">
                         </div>
                     </form>
                 </div>
@@ -89,24 +90,28 @@
 
             <div class="container-fluid">
                 <div class="row">
-                  <div class="col">
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Entrada</label>
-                        <textarea class="form-control" style="width: 100%; height: 400px;" id="entradaxml" rows="3"></textarea>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Entrada</label>
+                            <textarea class="form-control" style="width: 100%; height: 400px;" id="entradaxml"
+                                rows="3"></textarea>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Salida</label>
-                        <textarea class="form-control" style="width: 100%; height: 400px;" id="salidaxml" rows="3"></textarea>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Salida</label>
+                            <textarea class="form-control" style="width: 100%; height: 400px;" id="salidaxml"
+                                rows="3"></textarea>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-            
-            
+            </div>
+
+
             <button onclick="enviararchivo()" class="w-100 btn btn-lg btn-primary" type="button"
                 style="margin-top: 5px;">Enviar</button>
+            <button onclick="enviararchivo()" class="w-100 btn btn-lg btn-primary" type="button"
+                style="margin-top: 5px;">Consultar datos enviados</button>
             <!-- <button onclick="registrarusuario()" class="w-100 btn btn-lg btn-primary" type="button"
                 style="margin-top: 5px;">Registrarse</button> -->
         </div>
@@ -143,7 +148,7 @@
         </div>
     </section>
 
-    
+
 
     <!-- Ayuda Section-->
     <section class="page-section" id="ayuda">

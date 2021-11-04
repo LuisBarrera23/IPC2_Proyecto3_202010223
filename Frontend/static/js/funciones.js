@@ -1,10 +1,8 @@
 function cargarArchivo() {
     var datos = document.getElementById('archivoxml').files[0];
-    console.log(datos);
 
     var scannerxml = new FileReader();
     scannerxml.readAsText(datos);
-    console.log(scannerxml.result);
 
     scannerxml.onload = function () {
         //console.log(scannerxml.result);
@@ -17,14 +15,12 @@ function cargarArchivo() {
 
 function enviararchivo() {
     texto=document.getElementById('entradaxml').value
-    console.log(texto)
     var objeto = {
         'archivo': texto
     }
-    console.log(objeto)
 
 
-    fetch('http://localhost:5000/registrar', {
+    fetch('http://localhost:5000/procesar', {
         method: 'POST',
         body: JSON.stringify(objeto),
         headers: {
@@ -38,6 +34,7 @@ function enviararchivo() {
             alert("Ocurrio un error, ver la consola")
         })
         .then(response => {
-            console.log(response.Mensaje)
+            alert(response.Mensaje)
+            document.getElementById("salidaxml").value=response.salida
         })
 };
